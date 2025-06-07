@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dao.ZhanpinDao">
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        a.id as id
+        ,a.zhanpin_name as zhanpinName
+        ,a.zhanpin_photo as zhanpinPhoto
+        ,a.zhanpin_video as zhanpinVideo
+        ,a.zhanpin_types as zhanpinTypes
+        ,a.zan_number as zanNumber
+        ,a.cai_number as caiNumber
+        ,a.meishuguan_clicknum as meishuguanClicknum
+        ,a.zhanpin_content as zhanpinContent
+        ,a.zhanpin_delete as zhanpinDelete
+        ,a.insert_time as insertTime
+        ,a.create_time as createTime
+    </sql>
+    <select id="selectListView" parameterType="map" resultType="com.entity.view.ZhanpinView" >
+        SELECT
+        <include refid="Base_Column_List" />
+        <!-- 级联表的字段 -->
+
+        FROM zhanpin  a
+
+        <where>
+            <if test="params.ids != null">
+                and a.id in
+                <foreach item="item" index="index" collection="params.ids" open="(" separator="," close=")">
+                #{item}
+                </foreach>
+            </if>
+            <if test=" params.zhanpinName != '' and params.zhanpinName != null and params.zhanpinName != 'null' ">
+                and a.zhanpin_name like CONCAT('%',#{params.zhanpinName},'%')
+            </if>
+            <if test=" params.zhanpinVideo != '' and params.zhanpinVideo != null and params.zhanpinVideo != 'null' ">
+                and a.zhanpin_video like CONCAT('%',#{params.zhanpinVideo},'%')
+            </if>
+            <if test="params.zhanpinTypes != null and params.zhanpinTypes != ''">
+                and a.zhanpin_types = #{params.zhanpinTypes}
+            </if>
+            <if test="params.zanNumberStart != null and params.zanNumberStart != ''">
+                <![CDATA[  and a.zan_number >= #{params.zanNumberStart}   ]]>
+            </if>
+            <if test="params.zanNumberEnd != null and params.zanNumberEnd != ''">
+                <![CDATA[  and a.zan_number <= #{params.zanNumberEnd}   ]]>
+            </if>
+             <if test="params.zanNumber != null and params.zanNumber != ''">
+                and a.zan_number = #{params.zanNumber}
+             </if>
+            <if test="params.caiNumberStart != null and params.caiNumberStart != ''">
+                <![CDATA[  and a.cai_number >= #{params.caiNumberStart}   ]]>
+            </if>
+            <if test="params.caiNumberEnd != null and params.caiNumberEnd != ''">
+                <![CDATA[  and a.cai_number <= #{params.caiNumberEnd}   ]]>
+            </if>
+             <if test="params.caiNumber != null and params.caiNumber != ''">
+                and a.cai_number = #{params.caiNumber}
+             </if>
+            <if test="params.meishuguanClicknumStart != null and params.meishuguanClicknumStart != ''">
+                <![CDATA[  and a.meishuguan_clicknum >= #{params.meishuguanClicknumStart}   ]]>
+            </if>
+            <if test="params.meishuguanClicknumEnd != null and params.meishuguanClicknumEnd != ''">
+                <![CDATA[  and a.meishuguan_clicknum <= #{params.meishuguanClicknumEnd}   ]]>
+            </if>
+             <if test="params.meishuguanClicknum != null and params.meishuguanClicknum != ''">
+                and a.meishuguan_clicknum = #{params.meishuguanClicknum}
+             </if>
+            <if test=" params.zhanpinContent != '' and params.zhanpinContent != null and params.zhanpinContent != 'null' ">
+                and a.zhanpin_content like CONCAT('%',#{params.zhanpinContent},'%')
+            </if>
+            <if test="params.zhanpinDeleteStart != null and params.zhanpinDeleteStart != ''">
+                <![CDATA[  and a.zhanpin_delete >= #{params.zhanpinDeleteStart}   ]]>
+            </if>
+            <if test="params.zhanpinDeleteEnd != null and params.zhanpinDeleteEnd != ''">
+                <![CDATA[  and a.zhanpin_delete <= #{params.zhanpinDeleteEnd}   ]]>
+            </if>
+             <if test="params.zhanpinDelete != null and params.zhanpinDelete != ''">
+                and a.zhanpin_delete = #{params.zhanpinDelete}
+             </if>
+            <if test=" params.insertTimeStart != '' and params.insertTimeStart != null ">
+                <![CDATA[  and UNIX_TIMESTAMP(a.insert_time) >= UNIX_TIMESTAMP(#{params.insertTimeStart}) ]]>
+            </if>
+            <if test=" params.insertTimeEnd != '' and params.insertTimeEnd != null ">
+                <![CDATA[  and UNIX_TIMESTAMP(a.insert_time) <= UNIX_TIMESTAMP(#{params.insertTimeEnd}) ]]>
+            </if>
+            <if test="params.insertTime != null and params.insertTime != ''">
+                and a.insert_time = #{params.insertTime}
+            </if>
+
+        </where>
+        order by a.${params.sort} ${params.order}
+    </select>
+
+</mapper>

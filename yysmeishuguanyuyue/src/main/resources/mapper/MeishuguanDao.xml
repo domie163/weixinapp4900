@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dao.MeishuguanDao">
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        a.id as id
+        ,a.meishuguan_uuid_number as meishuguanUuidNumber
+        ,a.meishuguan_name as meishuguanName
+        ,a.meishuguan_photo as meishuguanPhoto
+        ,a.meishuguan_address as meishuguanAddress
+        ,a.zan_number as zanNumber
+        ,a.cai_number as caiNumber
+        ,a.meishuguan_types as meishuguanTypes
+        ,a.meishuguan_kucun_number as meishuguanKucunNumber
+        ,a.meishuguan_new_money as meishuguanNewMoney
+        ,a.meishuguan_clicknum as meishuguanClicknum
+        ,a.jieshu_time as jieshuTime
+        ,a.meishuguan_content as meishuguanContent
+        ,a.meishuguan_delete as meishuguanDelete
+        ,a.insert_time as insertTime
+        ,a.create_time as createTime
+    </sql>
+    <select id="selectListView" parameterType="map" resultType="com.entity.view.MeishuguanView" >
+        SELECT
+        <include refid="Base_Column_List" />
+        <!-- 级联表的字段 -->
+
+        FROM meishuguan  a
+
+        <where>
+            <if test="params.ids != null">
+                and a.id in
+                <foreach item="item" index="index" collection="params.ids" open="(" separator="," close=")">
+                #{item}
+                </foreach>
+            </if>
+            <if test=" params.meishuguanUuidNumber != '' and params.meishuguanUuidNumber != null and params.meishuguanUuidNumber != 'null' ">
+                and a.meishuguan_uuid_number like CONCAT('%',#{params.meishuguanUuidNumber},'%')
+            </if>
+            <if test=" params.meishuguanName != '' and params.meishuguanName != null and params.meishuguanName != 'null' ">
+                and a.meishuguan_name like CONCAT('%',#{params.meishuguanName},'%')
+            </if>
+            <if test=" params.meishuguanAddress != '' and params.meishuguanAddress != null and params.meishuguanAddress != 'null' ">
+                and a.meishuguan_address like CONCAT('%',#{params.meishuguanAddress},'%')
+            </if>
+            <if test="params.zanNumberStart != null and params.zanNumberStart != ''">
+                <![CDATA[  and a.zan_number >= #{params.zanNumberStart}   ]]>
+            </if>
+            <if test="params.zanNumberEnd != null and params.zanNumberEnd != ''">
+                <![CDATA[  and a.zan_number <= #{params.zanNumberEnd}   ]]>
+            </if>
+             <if test="params.zanNumber != null and params.zanNumber != ''">
+                and a.zan_number = #{params.zanNumber}
+             </if>
+            <if test="params.caiNumberStart != null and params.caiNumberStart != ''">
+                <![CDATA[  and a.cai_number >= #{params.caiNumberStart}   ]]>
+            </if>
+            <if test="params.caiNumberEnd != null and params.caiNumberEnd != ''">
+                <![CDATA[  and a.cai_number <= #{params.caiNumberEnd}   ]]>
+            </if>
+             <if test="params.caiNumber != null and params.caiNumber != ''">
+                and a.cai_number = #{params.caiNumber}
+             </if>
+            <if test="params.meishuguanTypes != null and params.meishuguanTypes != ''">
+                and a.meishuguan_types = #{params.meishuguanTypes}
+            </if>
+            <if test="params.meishuguanKucunNumberStart != null and params.meishuguanKucunNumberStart != ''">
+                <![CDATA[  and a.meishuguan_kucun_number >= #{params.meishuguanKucunNumberStart}   ]]>
+            </if>
+            <if test="params.meishuguanKucunNumberEnd != null and params.meishuguanKucunNumberEnd != ''">
+                <![CDATA[  and a.meishuguan_kucun_number <= #{params.meishuguanKucunNumberEnd}   ]]>
+            </if>
+             <if test="params.meishuguanKucunNumber != null and params.meishuguanKucunNumber != ''">
+                and a.meishuguan_kucun_number = #{params.meishuguanKucunNumber}
+             </if>
+            <if test="params.meishuguanNewMoneyStart != null ">
+                <![CDATA[  and a.meishuguan_new_money >= #{params.meishuguanNewMoneyStart}   ]]>
+            </if>
+            <if test="params.meishuguanNewMoneyEnd != null ">
+                <![CDATA[  and a.meishuguan_new_money <= #{params.meishuguanNewMoneyEnd}   ]]>
+            </if>
+            <if test="params.meishuguanNewMoney != null and params.meishuguanNewMoney != ''">
+                and a.meishuguan_new_money = #{params.meishuguanNewMoney}
+            </if>
+            <if test="params.meishuguanClicknumStart != null and params.meishuguanClicknumStart != ''">
+                <![CDATA[  and a.meishuguan_clicknum >= #{params.meishuguanClicknumStart}   ]]>
+            </if>
+            <if test="params.meishuguanClicknumEnd != null and params.meishuguanClicknumEnd != ''">
+                <![CDATA[  and a.meishuguan_clicknum <= #{params.meishuguanClicknumEnd}   ]]>
+            </if>
+             <if test="params.meishuguanClicknum != null and params.meishuguanClicknum != ''">
+                and a.meishuguan_clicknum = #{params.meishuguanClicknum}
+             </if>
+            <if test=" params.jieshuTimeStart != '' and params.jieshuTimeStart != null ">
+                <![CDATA[  and UNIX_TIMESTAMP(a.jieshu_time) >= UNIX_TIMESTAMP(#{params.jieshuTimeStart}) ]]>
+            </if>
+            <if test=" params.jieshuTimeEnd != '' and params.jieshuTimeEnd != null ">
+                <![CDATA[  and UNIX_TIMESTAMP(a.jieshu_time) <= UNIX_TIMESTAMP(#{params.jieshuTimeEnd}) ]]>
+            </if>
+            <if test="params.jieshuTime != null and params.jieshuTime != ''">
+                and a.jieshu_time = #{params.jieshuTime}
+            </if>
+            <if test=" params.meishuguanContent != '' and params.meishuguanContent != null and params.meishuguanContent != 'null' ">
+                and a.meishuguan_content like CONCAT('%',#{params.meishuguanContent},'%')
+            </if>
+            <if test="params.meishuguanDeleteStart != null and params.meishuguanDeleteStart != ''">
+                <![CDATA[  and a.meishuguan_delete >= #{params.meishuguanDeleteStart}   ]]>
+            </if>
+            <if test="params.meishuguanDeleteEnd != null and params.meishuguanDeleteEnd != ''">
+                <![CDATA[  and a.meishuguan_delete <= #{params.meishuguanDeleteEnd}   ]]>
+            </if>
+             <if test="params.meishuguanDelete != null and params.meishuguanDelete != ''">
+                and a.meishuguan_delete = #{params.meishuguanDelete}
+             </if>
+            <if test=" params.insertTimeStart != '' and params.insertTimeStart != null ">
+                <![CDATA[  and UNIX_TIMESTAMP(a.insert_time) >= UNIX_TIMESTAMP(#{params.insertTimeStart}) ]]>
+            </if>
+            <if test=" params.insertTimeEnd != '' and params.insertTimeEnd != null ">
+                <![CDATA[  and UNIX_TIMESTAMP(a.insert_time) <= UNIX_TIMESTAMP(#{params.insertTimeEnd}) ]]>
+            </if>
+            <if test="params.insertTime != null and params.insertTime != ''">
+                and a.insert_time = #{params.insertTime}
+            </if>
+
+        </where>
+        order by a.${params.sort} ${params.order}
+    </select>
+
+</mapper>

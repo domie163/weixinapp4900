@@ -1,0 +1,420 @@
+{
+	"pages": [{
+		"path": "pages/login/login",
+		"style": {
+			"navigationBarBackgroundColor": "#8989c3",
+			"navigationBarTextStyle": "white",
+			"navigationBarTitleText": "登录"
+		}
+	},{
+		"path": "pages/register/register",
+		"style": {
+			"navigationBarBackgroundColor": "#8989c3",
+			"navigationBarTextStyle": "white",
+			"navigationBarTitleText": "注册"
+		}
+	},{
+		"path": "pages/forget/forget",
+		"style": {
+			"navigationBarBackgroundColor": "#8989c3",
+			"navigationBarTextStyle": "white",
+			"navigationBarTitleText": "忘记密码"
+		}
+		},
+		{
+		"path": "pages/changepassword/changepassword",
+		"style": {
+		"navigationBarBackgroundColor": "#8989c3",
+		"navigationBarTextStyle": "white",
+		"navigationBarTitleText": "修改密码"
+			}
+		},
+		{
+		"path": "pages/center/center",
+		"style": {
+			"navigationBarBackgroundColor": "#8989c3",
+			"navigationBarTextStyle": "white",
+			"navigationBarTitleText": "我的"
+		}
+	},{
+		"path": "pages/user-info/userinfo",
+		"style": {
+			"navigationBarBackgroundColor": "#8989c3",
+			"navigationBarTextStyle": "white",
+			"navigationBarTitleText": "用户信息"
+		}
+	}
+		,{
+			"path": "pages/recharge/recharge",
+			"style": {
+				"navigationBarBackgroundColor": "#8989c3",
+				"navigationBarTextStyle": "white",
+				"navigationBarTitleText": "充值"
+			}
+		}
+
+	,{
+		"path": "pages/caozuorizhi/list",
+		"style": {
+			"navigationBarBackgroundColor": "#8989c3",
+			"navigationBarTextStyle": "white",
+			"navigationBarTitleText": "操作日志展示"
+		}
+	},{
+		"path": "pages/caozuorizhi/list2",
+		"style": {
+			"navigationBarBackgroundColor": "#8989c3",
+			"navigationBarTextStyle": "white",
+			"navigationBarTitleText": "我的操作日志"
+		}
+	},{
+		"path": "pages/caozuorizhi/add-or-update",
+		"style": {
+			"navigationBarBackgroundColor": "#8989c3",
+			"navigationBarTextStyle": "white",
+			"navigationBarTitleText": "操作日志添加/修改"
+		}
+	},{
+		"path": "pages/caozuorizhi/detail",
+		"style": {
+			"navigationBarBackgroundColor": "#8989c3",
+			"navigationBarTextStyle": "white",
+			"navigationBarTitleText": "操作日志详情"
+		}
+	}
+       ,{
+		"path": "pages/forum/forum-index",
+		"style": {
+			"navigationBarBackgroundColor": "#8989c3",
+			"navigationBarTextStyle": "white",
+			"navigationBarTitleText": "全部发帖"
+		}
+	},{
+		"path": "pages/forum/forum-detail",
+		"style": {
+			"navigationBarBackgroundColor": "#8989c3",
+			"navigationBarTextStyle": "white",
+			"navigationBarTitleText": "发帖详情"
+		}
+	},{
+		"path": "pages/forum/forum-my",
+		"style": {
+			"navigationBarBackgroundColor": "#8989c3",
+			"navigationBarTextStyle": "white",
+			"navigationBarTitleText": "我的发帖"
+		}
+	},{
+		"path": "pages/forum/forum-add-or-update",
+		"style": {
+			"navigationBarBackgroundColor": "#8989c3",
+			"navigationBarTextStyle": "white",
+			"navigationBarTitleText": "发贴(修改/新增)"
+		}
+	}
+	,{
+		"path": "pages/meishuguan/list",
+		"style": {
+			"navigationBarBackgroundColor": "#8989c3",
+			"navigationBarTextStyle": "white",
+			"navigationBarTitleText": "美术馆展示"
+		}
+	},{
+		"path": "pages/meishuguan/list2",
+		"style": {
+			"navigationBarBackgroundColor": "#8989c3",
+			"navigationBarTextStyle": "white",
+			"navigationBarTitleText": "我的美术馆"
+		}
+	},{
+		"path": "pages/meishuguan/add-or-update",
+		"style": {
+			"navigationBarBackgroundColor": "#8989c3",
+			"navigationBarTextStyle": "white",
+			"navigationBarTitleText": "美术馆添加/修改"
+		}
+	},{
+		"path": "pages/meishuguan/detail",
+		"style": {
+			"navigationBarBackgroundColor": "#8989c3",
+			"navigationBarTextStyle": "white",
+			"navigationBarTitleText": "美术馆详情"
+		}
+	}
+	,{
+		"path": "pages/meishuguanCollection/list",
+		"style": {
+			"navigationBarBackgroundColor": "#8989c3",
+			"navigationBarTextStyle": "white",
+			"navigationBarTitleText": "美术馆收藏展示"
+		}
+	},{
+		"path": "pages/meishuguanCollection/list2",
+		"style": {
+			"navigationBarBackgroundColor": "#8989c3",
+			"navigationBarTextStyle": "white",
+			"navigationBarTitleText": "我的美术馆收藏"
+		}
+	},{
+		"path": "pages/meishuguanCollection/add-or-update",
+		"style": {
+			"navigationBarBackgroundColor": "#8989c3",
+			"navigationBarTextStyle": "white",
+			"navigationBarTitleText": "美术馆收藏添加/修改"
+		}
+	},{
+		"path": "pages/meishuguanCollection/detail",
+		"style": {
+			"navigationBarBackgroundColor": "#8989c3",
+			"navigationBarTextStyle": "white",
+			"navigationBarTitleText": "美术馆收藏详情"
+		}
+	}
+	,{
+		"path": "pages/meishuguanLiuyan/list",
+		"style": {
+			"navigationBarBackgroundColor": "#8989c3",
+			"navigationBarTextStyle": "white",
+			"navigationBarTitleText": "美术馆留言展示"
+		}
+	},{
+		"path": "pages/meishuguanLiuyan/list2",
+		"style": {
+			"navigationBarBackgroundColor": "#8989c3",
+			"navigationBarTextStyle": "white",
+			"navigationBarTitleText": "我的美术馆留言"
+		}
+	},{
+		"path": "pages/meishuguanLiuyan/add-or-update",
+		"style": {
+			"navigationBarBackgroundColor": "#8989c3",
+			"navigationBarTextStyle": "white",
+			"navigationBarTitleText": "美术馆留言添加/修改"
+		}
+	},{
+		"path": "pages/meishuguanLiuyan/detail",
+		"style": {
+			"navigationBarBackgroundColor": "#8989c3",
+			"navigationBarTextStyle": "white",
+			"navigationBarTitleText": "美术馆留言详情"
+		}
+	}
+	,{
+		"path": "pages/meishuguanOrder/list",
+		"style": {
+			"navigationBarTitleText": "参观预约"
+		}
+	},{
+	 	"path": "pages/meishuguanOrder/add-or-update",
+		"style": {
+			"navigationBarTitleText": "参观预约添加/修改"
+		}
+	},{
+		"path": "pages/meishuguanOrder/confirm",
+		"style": {
+			"navigationBarTitleText": "订单确认"
+		}
+	}
+	,{
+		"path": "pages/news/list",
+		"style": {
+			"navigationBarBackgroundColor": "#8989c3",
+			"navigationBarTextStyle": "white",
+			"navigationBarTitleText": "公告通知展示"
+		}
+	},{
+		"path": "pages/news/list2",
+		"style": {
+			"navigationBarBackgroundColor": "#8989c3",
+			"navigationBarTextStyle": "white",
+			"navigationBarTitleText": "我的公告通知"
+		}
+	},{
+		"path": "pages/news/add-or-update",
+		"style": {
+			"navigationBarBackgroundColor": "#8989c3",
+			"navigationBarTextStyle": "white",
+			"navigationBarTitleText": "公告通知添加/修改"
+		}
+	},{
+		"path": "pages/news/detail",
+		"style": {
+			"navigationBarBackgroundColor": "#8989c3",
+			"navigationBarTextStyle": "white",
+			"navigationBarTitleText": "公告通知详情"
+		}
+	}
+	,{
+		"path": "pages/yonghu/list",
+		"style": {
+			"navigationBarBackgroundColor": "#8989c3",
+			"navigationBarTextStyle": "white",
+			"navigationBarTitleText": "用户展示"
+		}
+	},{
+		"path": "pages/yonghu/list2",
+		"style": {
+			"navigationBarBackgroundColor": "#8989c3",
+			"navigationBarTextStyle": "white",
+			"navigationBarTitleText": "我的用户"
+		}
+	},{
+		"path": "pages/yonghu/add-or-update",
+		"style": {
+			"navigationBarBackgroundColor": "#8989c3",
+			"navigationBarTextStyle": "white",
+			"navigationBarTitleText": "用户添加/修改"
+		}
+	},{
+		"path": "pages/yonghu/detail",
+		"style": {
+			"navigationBarBackgroundColor": "#8989c3",
+			"navigationBarTextStyle": "white",
+			"navigationBarTitleText": "用户详情"
+		}
+	}
+	,{
+		"path": "pages/zhanpin/list",
+		"style": {
+			"navigationBarBackgroundColor": "#8989c3",
+			"navigationBarTextStyle": "white",
+			"navigationBarTitleText": "展品信息展示"
+		}
+	},{
+		"path": "pages/zhanpin/list2",
+		"style": {
+			"navigationBarBackgroundColor": "#8989c3",
+			"navigationBarTextStyle": "white",
+			"navigationBarTitleText": "我的展品信息"
+		}
+	},{
+		"path": "pages/zhanpin/add-or-update",
+		"style": {
+			"navigationBarBackgroundColor": "#8989c3",
+			"navigationBarTextStyle": "white",
+			"navigationBarTitleText": "展品信息添加/修改"
+		}
+	},{
+		"path": "pages/zhanpin/detail",
+		"style": {
+			"navigationBarBackgroundColor": "#8989c3",
+			"navigationBarTextStyle": "white",
+			"navigationBarTitleText": "展品信息详情"
+		}
+	}
+	,{
+		"path": "pages/zhanpinCollection/list",
+		"style": {
+			"navigationBarBackgroundColor": "#8989c3",
+			"navigationBarTextStyle": "white",
+			"navigationBarTitleText": "展品收藏展示"
+		}
+	},{
+		"path": "pages/zhanpinCollection/list2",
+		"style": {
+			"navigationBarBackgroundColor": "#8989c3",
+			"navigationBarTextStyle": "white",
+			"navigationBarTitleText": "我的展品收藏"
+		}
+	},{
+		"path": "pages/zhanpinCollection/add-or-update",
+		"style": {
+			"navigationBarBackgroundColor": "#8989c3",
+			"navigationBarTextStyle": "white",
+			"navigationBarTitleText": "展品收藏添加/修改"
+		}
+	},{
+		"path": "pages/zhanpinCollection/detail",
+		"style": {
+			"navigationBarBackgroundColor": "#8989c3",
+			"navigationBarTextStyle": "white",
+			"navigationBarTitleText": "展品收藏详情"
+		}
+	}
+	,{
+		"path": "pages/zhanpinLiuyan/list",
+		"style": {
+			"navigationBarBackgroundColor": "#8989c3",
+			"navigationBarTextStyle": "white",
+			"navigationBarTitleText": "展品留言展示"
+		}
+	},{
+		"path": "pages/zhanpinLiuyan/list2",
+		"style": {
+			"navigationBarBackgroundColor": "#8989c3",
+			"navigationBarTextStyle": "white",
+			"navigationBarTitleText": "我的展品留言"
+		}
+	},{
+		"path": "pages/zhanpinLiuyan/add-or-update",
+		"style": {
+			"navigationBarBackgroundColor": "#8989c3",
+			"navigationBarTextStyle": "white",
+			"navigationBarTitleText": "展品留言添加/修改"
+		}
+	},{
+		"path": "pages/zhanpinLiuyan/detail",
+		"style": {
+			"navigationBarBackgroundColor": "#8989c3",
+			"navigationBarTextStyle": "white",
+			"navigationBarTitleText": "展品留言详情"
+		}
+	}
+			,{
+		"path": "pages/index/index",
+		"style": {
+			"navigationBarBackgroundColor": "#8989c3",
+			"navigationBarTextStyle": "white",
+			"navigationBarTitleText": "岳阳市美术馆预约平台首页"
+		}
+	}
+	],
+	"globalStyle": {
+		"navigationBarTextStyle": "black",
+		"navigationBarTitleText": "岳阳市美术馆预约平台",
+		"navigationBarBackgroundColor": "#F8F8F8",
+		"backgroundColor": "#F8F8F8"
+	},
+	"tabBar": {
+		"color": "#FFFFFF",
+		"selectedColor": "#fff",
+		"borderStyle": "black",
+		"backgroundColor": "#9ad4ed",
+		"list": [{
+				"pagePath": "pages/index/index",
+				"iconPath": "static/tabs/index.png",
+				"selectedIconPath": "static/tabs/index1.png",
+				"text": "首页"
+			}
+			,{
+				"pagePath": "pages/meishuguan/list",
+				"iconPath": "static/tabs/type.png",
+				"selectedIconPath": "static/tabs/type1.png",
+				"text": "美术馆"
+			}
+			,{
+				"pagePath": "pages/zhanpin/list",
+				"iconPath": "static/tabs/type.png",
+				"selectedIconPath": "static/tabs/type1.png",
+				"text": "展品信息"
+			}
+			,{
+			 	"pagePath": "pages/forum/forum-index",
+				"iconPath": "static/tabs/order.png",
+			 	"selectedIconPath": "static/tabs/order1.png",
+				"text": "论坛"
+			}
+			,{
+				"pagePath": "pages/center/center",
+				"iconPath": "static/tabs/mine.png",
+				"selectedIconPath": "static/tabs/mine1.png",
+				"text": "我的"
+			}
+		]
+	}
+	// "permission": {
+	// 	"scope.userLocation": {
+	// 		"desc": ""
+	// 	}
+	// },
+	// "requiredPrivateInfos": ["getLocation", "chooseLocation"]
+}

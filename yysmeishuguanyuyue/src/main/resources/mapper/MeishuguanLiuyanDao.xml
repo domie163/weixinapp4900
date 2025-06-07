@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dao.MeishuguanLiuyanDao">
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        a.id as id
+        ,a.meishuguan_id as meishuguanId
+        ,a.yonghu_id as yonghuId
+        ,a.meishuguan_liuyan_text as meishuguanLiuyanText
+        ,a.insert_time as insertTime
+        ,a.create_time as createTime
+    </sql>
+    <select id="selectListView" parameterType="map" resultType="com.entity.view.MeishuguanLiuyanView" >
+        SELECT
+        <include refid="Base_Column_List" />
+        <!-- 级联表的字段 -->
+        ,meishuguan.meishuguan_uuid_number as meishuguanUuidNumber
+        ,meishuguan.meishuguan_name as meishuguanName
+        ,meishuguan.meishuguan_photo as meishuguanPhoto
+        ,meishuguan.meishuguan_address as meishuguanAddress
+        ,meishuguan.zan_number as zanNumber
+        ,meishuguan.cai_number as caiNumber
+        ,meishuguan.meishuguan_types as meishuguanTypes
+        ,meishuguan.meishuguan_kucun_number as meishuguanKucunNumber
+        ,meishuguan.meishuguan_new_money as meishuguanNewMoney
+        ,meishuguan.meishuguan_clicknum as meishuguanClicknum
+        ,meishuguan.jieshu_time as jieshuTime
+        ,meishuguan.meishuguan_content as meishuguanContent
+        ,meishuguan.meishuguan_delete as meishuguanDelete
+        ,yonghu.yonghu_name as yonghuName
+        ,yonghu.yonghu_phone as yonghuPhone
+        ,yonghu.yonghu_id_number as yonghuIdNumber
+        ,yonghu.yonghu_photo as yonghuPhoto
+        ,yonghu.yonghu_email as yonghuEmail
+        ,yonghu.new_money as newMoney
+        ,yonghu.yonghu_delete as yonghuDelete
+
+        FROM meishuguan_liuyan  a
+        left JOIN meishuguan meishuguan ON a.meishuguan_id = meishuguan.id
+        left JOIN yonghu yonghu ON a.yonghu_id = yonghu.id
+
+        <where>
+            <if test="params.ids != null">
+                and a.id in
+                <foreach item="item" index="index" collection="params.ids" open="(" separator="," close=")">
+                #{item}
+                </foreach>
+            </if>
+            <if test="params.meishuguanId != null and params.meishuguanId != ''">
+                and (
+                    a.meishuguan_id = #{params.meishuguanId}
+                )
+            </if>
+            <if test="params.yonghuId != null and params.yonghuId != ''">
+                and (
+                    a.yonghu_id = #{params.yonghuId}
+                )
+            </if>
+            <if test=" params.meishuguanLiuyanText != '' and params.meishuguanLiuyanText != null and params.meishuguanLiuyanText != 'null' ">
+                and a.meishuguan_liuyan_text like CONCAT('%',#{params.meishuguanLiuyanText},'%')
+            </if>
+            <if test=" params.insertTimeStart != '' and params.insertTimeStart != null ">
+                <![CDATA[  and UNIX_TIMESTAMP(a.insert_time) >= UNIX_TIMESTAMP(#{params.insertTimeStart}) ]]>
+            </if>
+            <if test=" params.insertTimeEnd != '' and params.insertTimeEnd != null ">
+                <![CDATA[  and UNIX_TIMESTAMP(a.insert_time) <= UNIX_TIMESTAMP(#{params.insertTimeEnd}) ]]>
+            </if>
+            <if test="params.insertTime != null and params.insertTime != ''">
+                and a.insert_time = #{params.insertTime}
+            </if>
+
+                <!-- 判断美术馆的id不为空 -->
+            <if test=" params.meishuguanIdNotNull != '' and params.meishuguanIdNotNull != null and params.meishuguanIdNotNull != 'null' ">
+                and a.meishuguan_id IS NOT NULL
+            </if>
+            <if test=" params.meishuguanUuidNumber != '' and params.meishuguanUuidNumber != null and params.meishuguanUuidNumber != 'null' ">
+                and meishuguan.meishuguan_uuid_number like CONCAT('%',#{params.meishuguanUuidNumber},'%')
+            </if>
+            <if test=" params.meishuguanName != '' and params.meishuguanName != null and params.meishuguanName != 'null' ">
+                and meishuguan.meishuguan_name like CONCAT('%',#{params.meishuguanName},'%')
+            </if>
+            <if test=" params.meishuguanAddress != '' and params.meishuguanAddress != null and params.meishuguanAddress != 'null' ">
+                and meishuguan.meishuguan_address like CONCAT('%',#{params.meishuguanAddress},'%')
+            </if>
+            <if test="params.zanNumberStart != null  and params.zanNumberStart != '' ">
+                <![CDATA[  and meishuguan.zan_number >= #{params.zanNumberStart}   ]]>
+            </if>
+            <if test="params.zanNumberEnd != null  and params.zanNumberEnd != '' ">
+                <![CDATA[  and meishuguan.zan_number <= #{params.zanNumberEnd}   ]]>
+            </if>
+            <if test="params.zanNumber != null  and params.zanNumber != '' ">
+                and meishuguan.zan_number = #{params.zanNumber}
+            </if>
+            <if test="params.caiNumberStart != null  and params.caiNumberStart != '' ">
+                <![CDATA[  and meishuguan.cai_number >= #{params.caiNumberStart}   ]]>
+            </if>
+            <if test="params.caiNumberEnd != null  and params.caiNumberEnd != '' ">
+                <![CDATA[  and meishuguan.cai_number <= #{params.caiNumberEnd}   ]]>
+            </if>
+            <if test="params.caiNumber != null  and params.caiNumber != '' ">
+                and meishuguan.cai_number = #{params.caiNumber}
+            </if>
+            <if test="params.meishuguanTypes != null  and params.meishuguanTypes != ''">
+                and meishuguan.meishuguan_types = #{params.meishuguanTypes}
+            </if>
+
+            <if test="params.meishuguanKucunNumberStart != null  and params.meishuguanKucunNumberStart != '' ">
+                <![CDATA[  and meishuguan.meishuguan_kucun_number >= #{params.meishuguanKucunNumberStart}   ]]>
+            </if>
+            <if test="params.meishuguanKucunNumberEnd != null  and params.meishuguanKucunNumberEnd != '' ">
+                <![CDATA[  and meishuguan.meishuguan_kucun_number <= #{params.meishuguanKucunNumberEnd}   ]]>
+            </if>
+            <if test="params.meishuguanKucunNumber != null  and params.meishuguanKucunNumber != '' ">
+                and meishuguan.meishuguan_kucun_number = #{params.meishuguanKucunNumber}
+            </if>
+            <if test="params.meishuguanNewMoneyStart != null ">
+                <![CDATA[  and meishuguan.meishuguan_new_money >= #{params.meishuguanNewMoneyStart}   ]]>
+            </if>
+            <if test="params.meishuguanNewMoneyEnd != null ">
+                <![CDATA[  and meishuguan.meishuguan_new_money <= #{params.meishuguanNewMoneyEnd}   ]]>
+            </if>
+            <if test="params.meishuguanNewMoney != null and params.meishuguanNewMoney != ''">
+                and a.meishuguan_new_money = #{params.meishuguanNewMoney}
+            </if>
+            <if test="params.meishuguanClicknumStart != null  and params.meishuguanClicknumStart != '' ">
+                <![CDATA[  and meishuguan.meishuguan_clicknum >= #{params.meishuguanClicknumStart}   ]]>
+            </if>
+            <if test="params.meishuguanClicknumEnd != null  and params.meishuguanClicknumEnd != '' ">
+                <![CDATA[  and meishuguan.meishuguan_clicknum <= #{params.meishuguanClicknumEnd}   ]]>
+            </if>
+            <if test="params.meishuguanClicknum != null  and params.meishuguanClicknum != '' ">
+                and meishuguan.meishuguan_clicknum = #{params.meishuguanClicknum}
+            </if>
+            <if test=" params.jieshuTimeStart != '' and params.jieshuTimeStart != null ">
+                <![CDATA[  and UNIX_TIMESTAMP(meishuguan.jieshu_time) >= UNIX_TIMESTAMP(#{params.jieshuTimeStart}) ]]>
+            </if>
+            <if test=" params.jieshuTimeEnd != '' and params.jieshuTimeEnd != null ">
+                <![CDATA[  and UNIX_TIMESTAMP(meishuguan.jieshu_time) <= UNIX_TIMESTAMP(#{params.jieshuTimeEnd}) ]]>
+            </if>
+            <if test="params.jieshuTime != null and params.jieshuTime != ''">
+                and a.jieshu_time = #{params.jieshuTime}
+            </if>
+            <if test=" params.meishuguanContent != '' and params.meishuguanContent != null and params.meishuguanContent != 'null' ">
+                and meishuguan.meishuguan_content like CONCAT('%',#{params.meishuguanContent},'%')
+            </if>
+            <if test="params.meishuguanDeleteStart != null  and params.meishuguanDeleteStart != '' ">
+                <![CDATA[  and meishuguan.meishuguan_delete >= #{params.meishuguanDeleteStart}   ]]>
+            </if>
+            <if test="params.meishuguanDeleteEnd != null  and params.meishuguanDeleteEnd != '' ">
+                <![CDATA[  and meishuguan.meishuguan_delete <= #{params.meishuguanDeleteEnd}   ]]>
+            </if>
+            <if test="params.meishuguanDelete != null  and params.meishuguanDelete != '' ">
+                and meishuguan.meishuguan_delete = #{params.meishuguanDelete}
+            </if>
+            <if test=" params.insertTimeStart != '' and params.insertTimeStart != null ">
+                <![CDATA[  and UNIX_TIMESTAMP(meishuguan.insert_time) >= UNIX_TIMESTAMP(#{params.insertTimeStart}) ]]>
+            </if>
+            <if test=" params.insertTimeEnd != '' and params.insertTimeEnd != null ">
+                <![CDATA[  and UNIX_TIMESTAMP(meishuguan.insert_time) <= UNIX_TIMESTAMP(#{params.insertTimeEnd}) ]]>
+            </if>
+            <if test="params.insertTime != null and params.insertTime != ''">
+                and a.insert_time = #{params.insertTime}
+            </if>
+                <!-- 判断用户的id不为空 -->
+            <if test=" params.yonghuIdNotNull != '' and params.yonghuIdNotNull != null and params.yonghuIdNotNull != 'null' ">
+                and a.yonghu_id IS NOT NULL
+            </if>
+            <if test=" params.yonghuName != '' and params.yonghuName != null and params.yonghuName != 'null' ">
+                and yonghu.yonghu_name like CONCAT('%',#{params.yonghuName},'%')
+            </if>
+            <if test=" params.yonghuPhone != '' and params.yonghuPhone != null and params.yonghuPhone != 'null' ">
+                and yonghu.yonghu_phone like CONCAT('%',#{params.yonghuPhone},'%')
+            </if>
+            <if test=" params.yonghuIdNumber != '' and params.yonghuIdNumber != null and params.yonghuIdNumber != 'null' ">
+                and yonghu.yonghu_id_number like CONCAT('%',#{params.yonghuIdNumber},'%')
+            </if>
+            <if test=" params.yonghuEmail != '' and params.yonghuEmail != null and params.yonghuEmail != 'null' ">
+                and yonghu.yonghu_email like CONCAT('%',#{params.yonghuEmail},'%')
+            </if>
+            <if test="params.newMoneyStart != null ">
+                <![CDATA[  and yonghu.new_money >= #{params.newMoneyStart}   ]]>
+            </if>
+            <if test="params.newMoneyEnd != null ">
+                <![CDATA[  and yonghu.new_money <= #{params.newMoneyEnd}   ]]>
+            </if>
+            <if test="params.newMoney != null and params.newMoney != ''">
+                and a.new_money = #{params.newMoney}
+            </if>
+            <if test="params.yonghuDeleteStart != null  and params.yonghuDeleteStart != '' ">
+                <![CDATA[  and yonghu.yonghu_delete >= #{params.yonghuDeleteStart}   ]]>
+            </if>
+            <if test="params.yonghuDeleteEnd != null  and params.yonghuDeleteEnd != '' ">
+                <![CDATA[  and yonghu.yonghu_delete <= #{params.yonghuDeleteEnd}   ]]>
+            </if>
+            <if test="params.yonghuDelete != null  and params.yonghuDelete != '' ">
+                and yonghu.yonghu_delete = #{params.yonghuDelete}
+            </if>
+            <if test=" params.insertTimeStart != '' and params.insertTimeStart != null ">
+                <![CDATA[  and UNIX_TIMESTAMP(yonghu.insert_time) >= UNIX_TIMESTAMP(#{params.insertTimeStart}) ]]>
+            </if>
+            <if test=" params.insertTimeEnd != '' and params.insertTimeEnd != null ">
+                <![CDATA[  and UNIX_TIMESTAMP(yonghu.insert_time) <= UNIX_TIMESTAMP(#{params.insertTimeEnd}) ]]>
+            </if>
+            <if test="params.insertTime != null and params.insertTime != ''">
+                and a.insert_time = #{params.insertTime}
+            </if>
+        </where>
+        order by a.${params.sort} ${params.order}
+    </select>
+
+</mapper>
